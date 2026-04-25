@@ -9,3 +9,4 @@ fn main() {
     .select_first("title")
     .map(|title| title.inner_html())
 }
+
