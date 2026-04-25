@@ -1,3 +1,4 @@
+use std::time::Duration;
 use trpl::{Either, Html};
 
 fn main() {
