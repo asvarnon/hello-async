@@ -1,5 +1,6 @@
 use std::{future, time::Duration};
 use trpl::{Either, Html, StreamExt};
+use std::pin::{Pin, pin};
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
@@ -43,13 +44,31 @@ fn main() {
         //     println!("received '{value}'");
         // }
 
-        let values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let values = [1, 2, 3];
         let iter = values.iter().map(|n| n * 2);
         let mut stream = trpl::stream_from_iter(iter);
 
         while let Some(value) = stream.next().await {
             println!("The value was: {value}");
         }
+
+        println!("-------------------------PIN example-----------------------------");
+
+        let tx1_fut = pin!(async move {
+            // --snip--
+        });
+
+        let rx_fut = pin!(async {
+            // --snip--
+        });
+
+        let tx_fut = pin!(async move {
+            // --snip--
+        });
+
+        let futures: Vec<Pin<&mut dyn Future<Output = ()>>> =
+            vec![tx1_fut, rx_fut, tx_fut];
+
     })
 }
 async fn page_title(url: &str) -> (&str, Option<String>) {
