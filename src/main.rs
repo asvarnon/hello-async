@@ -1,5 +1,5 @@
 use std::pin::{Pin, pin};
-use std::{future, time::Duration};
+use std::{future, thread, time::Duration};
 use trpl::{Either, Html, StreamExt};
 
 fn main() {
